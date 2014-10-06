@@ -32,7 +32,7 @@ public class Security {
 	static private byte[]  hash;
 	static private KeyPair keys;
 	static private byte[] signatura;
-	static private KeyStore myKeyStore;
+	//static private KeyStore myKeyStore=null;
 	
 	static public SecretKey generateKey(int keySize) //Generate a SecretKey
 	{ 
@@ -251,6 +251,7 @@ public class Security {
   
   public static void main (String[] args) 
   {
+	  KeyStore myKeyStore=null;
 	  	try
 		{
 			if (args.length == 0)
@@ -310,13 +311,15 @@ public class Security {
 			System.out.println("És la signatura correcta? "+validateSignature(dadesDesxifradesPrivateKey,signatura,keys.getPublic()));
 			
 			try {
-				myKeyStore = loadKeyStore("$HOME/.keystore", "tyghbn67");
+				myKeyStore = loadKeyStore("/home/sbalaguer/.keystore", "tyghbn67");
+				System.out.println("Valor de myKeyStore: "+myKeyStore);
 				System.out.println("Nº d'entrades: "+myKeyStore.size());
 				
-
+				int i = 0;
 				for (Enumeration<String> alias = myKeyStore.aliases(); alias.hasMoreElements();)
 				{
-					System.out.println(alias.nextElement());
+					System.out.println("Clau nº "+i+": "+alias.nextElement());
+					i++;
 				}
 				
 			} catch (Exception e) {
