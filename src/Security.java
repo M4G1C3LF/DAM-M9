@@ -1,5 +1,3 @@
-package dam.m9.f1;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.UnsupportedEncodingException;
@@ -276,7 +274,7 @@ public class Security {
 			dadesDesxifrades = cipherDataECB(clau, dadesXifrades,Cipher.DECRYPT_MODE);
 			System.out.println("Dades DesxifradesEBC: "+new String(dadesDesxifrades,"UTF-8"));
 			
-			hash = generateHash("CONTRASEÑA",256);
+			hash = generateHash("CONTRASEÃ‘A",256);
 			System.out.println("Mi hash generado: "+hash);
 			
 			dadesXifrades = cipherDataCBC(clau, new String("Hola Benvinguts!").getBytes(),Cipher.ENCRYPT_MODE);
@@ -285,7 +283,7 @@ public class Security {
 			dadesDesxifrades = cipherDataCBC(clau, dadesXifrades,Cipher.DECRYPT_MODE);
 			System.out.println("Dades DesxifradesCBC: "+new String(dadesDesxifrades,"UTF-8"));
 			
-			keys = generateKeyPair(1024); //MÍNIM 1024 bits
+			keys = generateKeyPair(1024); //MÃ�NIM 1024 bits
 			
 			dadesXifrades = cipherDataECB(keys.getPrivate(), new String("Dades Privades").getBytes(),Cipher.ENCRYPT_MODE);
 			System.out.println("Dades XifradesEBC amb clau privada: "+dadesXifrades);
@@ -293,14 +291,14 @@ public class Security {
 			dadesDesxifrades = cipherDataECB(keys.getPublic(), dadesXifrades,Cipher.DECRYPT_MODE);
 			System.out.println("Dades DesxifradesEBC amb clau publica: "+new String(dadesDesxifrades,"UTF-8"));
 			
-			dadesXifrades = cipherDataECB(keys.getPublic(), new String("Dades Públiques").getBytes(),Cipher.ENCRYPT_MODE);
-			System.out.println("Dades XifradesEBC amb clau pública: "+dadesXifrades);
+			dadesXifrades = cipherDataECB(keys.getPublic(), new String("Dades PÃºbliques").getBytes(),Cipher.ENCRYPT_MODE);
+			System.out.println("Dades XifradesEBC amb clau pÃºblica: "+dadesXifrades);
 			
 			dadesDesxifrades = cipherDataECB(keys.getPrivate(), dadesXifrades,Cipher.DECRYPT_MODE);
 			System.out.println("Dades DesxifradesEBC amb clau privada: "+new String(dadesDesxifrades,"UTF-8"));
 			
 			dadesXifradesPublicKey= encryptWrappedData(dadesDesxifrades,keys.getPublic());
-			System.out.println("Dades Xifrades amb clau pública: "+ dadesXifradesPublicKey.toString());
+			System.out.println("Dades Xifrades amb clau pÃºblica: "+ dadesXifradesPublicKey.toString());
 			
 			dadesDesxifradesPrivateKey= decryptWrappedData(dadesXifradesPublicKey,keys.getPrivate());
 			System.out.println("Dades Desxifrades amb clau privada: "+new String(dadesDesxifradesPrivateKey));
@@ -308,17 +306,17 @@ public class Security {
 			signatura = createSignature(dadesDesxifradesPrivateKey,keys.getPrivate());
 			System.out.println("Signatura creada - ToString() "+signatura.toString());
 			
-			System.out.println("És la signatura correcta? "+validateSignature(dadesDesxifradesPrivateKey,signatura,keys.getPublic()));
+			System.out.println("Ã‰s la signatura correcta? "+validateSignature(dadesDesxifradesPrivateKey,signatura,keys.getPublic()));
 			
 			try {
 				myKeyStore = loadKeyStore("/home/sbalaguer/.keystore", "tyghbn67");
 				System.out.println("Valor de myKeyStore: "+myKeyStore);
-				System.out.println("Nº d'entrades: "+myKeyStore.size());
+				System.out.println("NÂº d'entrades: "+myKeyStore.size());
 				
 				int i = 0;
 				for (Enumeration<String> alias = myKeyStore.aliases(); alias.hasMoreElements();)
 				{
-					System.out.println("Clau nº "+i+": "+alias.nextElement());
+					System.out.println("Clau nÂº "+i+": "+alias.nextElement());
 					i++;
 				}
 				
@@ -331,7 +329,7 @@ public class Security {
 		}
 		catch(NumberFormatException e)
 		{
-			System.err.println("El parámetro debe ser un numero entero");
+			System.err.println("El parÃ¡metro debe ser un numero entero");
 		}
 		catch(UnsupportedEncodingException e)
 		{

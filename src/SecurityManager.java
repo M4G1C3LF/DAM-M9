@@ -1,5 +1,3 @@
-package dam.m9.f1;
-
 import java.io.File;
 import java.io.FileInputStream;
 
