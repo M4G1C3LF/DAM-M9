@@ -3,40 +3,56 @@ import java.io.IOException;
 
 
 public class CercaCaracter {
-
+	
+	
+	//FUNCIÓ QUE RETORNA EL CONTINGUT DE UN ARXIU EN UN STRING.
 	public static String readFile(String path)
 	{
-		FileInputStream f1=null;
+		//Initzialitzem variables
+		FileInputStream fileContent=null;
 		String str = "";
 		
+		
+		/*
+		 * Necessitem el block Try/Catch/Finalitzar perque pot haver un error en temps de execució dins de l'àmbit del try.
+		 * Si falla el block Try deixarà de executar el try i anirá al Catch per poder controlar el error.
+		 * Tant si executa el Try o el Catch, sempre s'executarà el block Finally.
+		 */
 		try
 		{
-			String input = (path);
-			f1=new FileInputStream(input);
-			int size = f1.available();
+			//Creem FileInputStream en la ruta que li hem passat com a paràmetre.
+			fileContent=new FileInputStream(path);
+			
+			//Definim una variable amb el tamany total del arxiu
+			int size = fileContent.available();
 
+			//Mentre el nombre de iteració sigui menor al nombre de bytes del arxiu afegirá el carácter al String
 			for (int i=0; i<size;i++)
 			{
-				str += (char)f1.read();
+				str += (char)fileContent.read();
 			}
 		}
 		catch(IOException e)
 		{
+			//Si falla el block Try imprimirà el error que s'ha produït per consola.
 			e.printStackTrace();
 		}
 		finally
 		{
+			//Quan acaba de llegir o si falla, intetna tancar el fitxer.
 			try
 			{
-				f1.close();
+				fileContent.close();
 				
 			}
 			catch(IOException e)
 			{
+				//Si no pot tancar el fitxer imprimirà l'error per consola.
 				e.printStackTrace();
 			}
 		}
 		
+		//Retorna el contingut del fitxer en forma de cadena.
 		return str;
 	}
 	
