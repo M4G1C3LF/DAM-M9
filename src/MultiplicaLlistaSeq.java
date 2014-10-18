@@ -1,5 +1,3 @@
-package m9.uf2.processos;
-
 
 public class MultiplicaLlistaSeq {
 	private int operador1; 
