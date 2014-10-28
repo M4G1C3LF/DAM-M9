@@ -24,6 +24,7 @@ public class CercaCaractersThreads {
 		}
 		public Integer call() throws Exception {
 			
+			System.out.println("Soy el carácter "+charToFind);
 			return new Integer(charsInString(file,charToFind));
 		}
 	}
