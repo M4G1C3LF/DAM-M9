@@ -62,8 +62,6 @@ public class MoneyConversionThreads {
 	 	//En aquesta variable emmagatamem la llista de converions que farem.
 	 	List<Convert> llistaTasques= new ArrayList<Convert>();
 	 	
-	 	
-	 	
 	 	llistaTasques.add(new Convert(20d,'e'));
 	 	llistaTasques.add(new Convert(10d,'d'));
 	 	llistaTasques.add(new Convert(123d,'e'));
