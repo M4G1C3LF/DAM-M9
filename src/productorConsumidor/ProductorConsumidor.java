@@ -2,10 +2,12 @@ package productorConsumidor;
 
 public class ProductorConsumidor {
     public static void main(String[] args) throws InterruptedException, Throwable {
-        String[] cadena = new String[]{"hola","que","ases","tt","tus huebos"};
-	Monitor saf = new Monitor();
-	Productor p = new Productor(saf);
-	Consumidor c = new Consumidor(saf);
+
+    //INSTANCIEM EL MONITOR, EL PRODUCTOR I ELS CONSUMIDOR
+    //INSTANCIEM ELS THREADS I ELS INICIEM
+    Monitor mon = new Monitor();
+	Productor p = new Productor(mon);
+	Consumidor c = new Consumidor(mon);
 	Thread productor = new Thread(p);
 	Thread consumidor = new Thread(c);
 	productor.start();
